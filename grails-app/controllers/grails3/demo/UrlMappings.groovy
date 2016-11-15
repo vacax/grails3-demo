@@ -9,8 +9,6 @@ class UrlMappings {
             }
         }
 
-        "/"(view:"/indexBootStrap")
-        "/index.gps"(view:"/indexBootStrap")
         "/bootStrap"(view: "/indexBootStrap")
 
         "500"(view:'/error')

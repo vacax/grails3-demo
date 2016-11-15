@@ -4,6 +4,11 @@ import edu.pucmm.pwa.domains.Estudiante
 
 class FormulariosController {
 
+    def vistaBootStrap(){
+        println("....")
+        render(view: "/indexBootStrap")
+    }
+
     def accionSinVista(){
         println("Debe mostrar un error, no tiene vista asociada...")
     }

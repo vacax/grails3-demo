@@ -57,6 +57,7 @@ dependencies {
     //Plugins Grails3.
     compile 'org.grails.plugins:grails-google-visualization:2.2'
     compile 'org.grails.plugins:quartz:2.0.9'
+    compile 'org.grails.plugins:spring-security-core:3.1.1'
 }
 
 
