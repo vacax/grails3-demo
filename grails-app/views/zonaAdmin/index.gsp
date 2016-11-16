@@ -12,7 +12,7 @@
     <content tag="contenido">
         <div class="jumbotron">
             <h1>Zona Admin</h1>
-            <p>Solo el usuario admin, que tiene el ROLE_ADMIN puede acceder...
+            <p>Solo el usuario ${usuario.email}, que tiene el ROLE_ADMIN puede acceder...
             Si accedes con el usuario <strong>usuario</strong>, no puedes entrar...</p>
         </div>
     </content>
