@@ -19,7 +19,7 @@
 
     <content tag="contenido">
         <div class="jumbotron">
-            <h1>Versión de Grails: <g:meta name="app.grails.version"/></h1>
+            <h1>Versión de Grails...: <g:meta name="app.grails.version"/></h1>
             <p>Proyecto para demostrar la funcionalidad del framework, ir recorriendo los diferentes ejemplos...</p>
         </div>
 

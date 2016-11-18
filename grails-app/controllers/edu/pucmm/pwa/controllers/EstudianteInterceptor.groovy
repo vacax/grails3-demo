@@ -14,7 +14,7 @@ class EstudianteInterceptor {
         println "Aplicando el filtro antes de la llamada"
         //controlando una URL.
         if(actionName == "noEntraPorFiltro"){
-            render "No puedes entrar, controlado por el interceptor"
+            render "No puedes entrar, controlado por el interceptor...."
             return false;
         }
         //Para continuar debo retornar true
