@@ -1,6 +1,6 @@
 <g:applyLayout name="plantillaBootStrap">
     <content tag="encabezado">
-        Zona Admin - Acceso Restringido....
+        <h1 class="h2">Zona Admin - Acceso Restringido....</h1>
     </content>
 
     <content tag="breadcrumb">

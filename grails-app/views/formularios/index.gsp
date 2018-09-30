@@ -7,8 +7,7 @@
 
 <g:applyLayout name="plantillaBootStrap">
     <content tag="encabezado">
-        Uso de formularios en Grails
-        <small>Ejemplos</small>
+        <h1 class="h2">Uso de formularios en Grails</h1>
     </content>
 
     <content tag="breadcrumb">
@@ -61,7 +60,7 @@
 
             <g:if test="${estudiante2}">
                 <p>
-                    El estudiante ${estudiante.nombre} - ${estudiante.apellido}  fue seleccionado..
+                    El estudiante ${estudiante2.nombre} - ${estudiante2.apellido}  fue seleccionado..
                 </p>
             </g:if>
         </div>
@@ -105,7 +104,7 @@
 
             <g:if test="${estudiante4}">
                 <p>
-                    El estudiante ${estudiante4.nombre} - ${estudiante4.apellido}  fue seleccionado..
+                    El estudiante ${estudiante4?.nombre} - ${estudiante4?.apellido}  fue seleccionado..
                 </p>
             </g:if>
         </div>

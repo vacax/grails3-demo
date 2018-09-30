@@ -10,6 +10,7 @@ class UrlMappings {
         }
 
         "/bootStrap"(view: "/indexBootStrap")
+        //"/"(controller: "profesor", action: "index")
 
         "500"(view:'/error')
         "404"(view:'/notFound')

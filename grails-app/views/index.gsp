@@ -7,7 +7,7 @@
 
 <g:applyLayout name="plantillaBootStrap">
     <content tag="encabezado">
-        Proyecto en Grails - Utilizando Bootstrap...
+        Proyecto en Grails - Utilizando Bootstrap
         <small>Ejemplos</small>
     </content>
 

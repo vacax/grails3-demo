@@ -11,11 +11,11 @@
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title><g:layoutTitle default="Prueba de BootStrap..."/></title>
+    <title><g:layoutTitle default="Aplicación Demostración en Grails"/></title>
 
     %{--
     Este bloque representa los recursos utilizados por defecto en el template, comentandolo
@@ -31,8 +31,8 @@
     %{--
     Llamando los recursos de una manera más comoda.
     --}%
-    <asset:stylesheet src="principal.css"/>
-    <asset:javascript src="principal.js" />
+   %{-- <asset:stylesheet src="principal.css"/>
+    <asset:javascript src="principal.js" />--}%
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -40,6 +40,12 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+    %{----}%
+    <link rel="stylesheet" href="/webjars/bootstrap/4.1.3/css/bootstrap.min.css" >
+    %{--Utilizando el plugin de assets--}%
+    <asset:link rel="stylesheet" href="dashboard.css"/>
+
+    %{----}%
     <g:layoutHead/>
 
     %{-- Para incluir otras recursos.--}%
@@ -48,174 +54,108 @@
 </head>
 
 <body>
+<nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
+    <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Demo Grails 3</a>
+    <label style="color: white;">Bienvenido <strong><sec:username/></strong></label>
+    <ul class="navbar-nav px-3">
+        <li class="nav-item text-nowrap">
+            %{--
+                       Para acceder directamente al logout debe ser una llamada POST.
+                       Puedo llamarlo desde un controlador, via el servicio de Spring.
+                       --}%
+            <form name="submitForm" method="POST" action="${createLink(controller: 'logout')}">
+                <input type="hidden" name="" value="">
+            </form>
+            <a class="nav-link" href="javascript:document.submitForm.submit()">Log Out</a>
+        </li>
+    </ul>
+</nav>
 
-<div id="wrapper">
-
-    <!-- Navigation -->
-    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <g:link uri="/bootStrap" class="navbar-brand">Aplicación Basada en Grails</g:link>
-        </div>
-
-        <!-- Top Menu Items -->
-        <ul class="nav navbar-right top-nav">
-            <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-envelope"></i> <b class="caret"></b></a>
-                <ul class="dropdown-menu message-dropdown">
-                    <li class="message-preview">
-                        <a href="#">
-                            <div class="media">
-                                <span class="pull-left">
-                                    <img class="media-object" src="http://placehold.it/50x50" alt="">
-                                </span>
-                                <div class="media-body">
-                                    <h5 class="media-heading">
-                                        %{--Como puedo tomar rapidamente el usuario lougeado.--}%
-                                        <strong><sec:username/></strong>
-                                    </h5>
-                                    <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
-                                    <p>Información de ejemplo...</p>
-                                </div>
-                            </div>
-                        </a>
+<div class="container-fluid">
+    <div class="row">
+        <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+            <div class="sidebar-sticky">
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <g:link class="nav-link active" uri="/bootStrap" >
+                            <span data-feather="home"></span>
+                            Dashboard <span class="sr-only">(current)</span>
+                        </g:link>
                     </li>
-                    <li class="message-footer">
-                        <a href="#">Read All New Messages</a>
+                    <li class="nav-item">
+                        <g:link class="nav-link" controller="formularios" action="index" >
+                            <span data-feather="file"></span>
+                            Formularios
+                        </g:link>
+                    </li>
+                    <li class="nav-item">
+                        <g:link class="nav-link" controller="grupoAsignatura" action="index" >
+                            <span data-feather="shopping-cart"></span>
+                            Estudiante Scaffold
+                        </g:link>
+                    </li>
+                    <li class="nav-item">
+                        <g:link class="nav-link" controller="zonaAdmin" action="index" >
+                            <span data-feather="users"></span>
+                            Zona Seguridad
+                        </g:link>
+                    </li>
+                    <li class="nav-item">
+                        <g:link class="nav-link" controller="miControladorRest" action="pruebaChartGoogle" >
+                            <span data-feather="bar-chart-2"></span>
+                            Prueba Google Chart
+                        </g:link>
                     </li>
                 </ul>
-            </li>
-            <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bell"></i> <b class="caret"></b></a>
-                <ul class="dropdown-menu alert-dropdown">
-                    <li>
-                        <a href="#">Alert Name <span class="label label-default">Alert Badge</span></a>
+                <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+                    <span>Otros Ejemplos</span>
+                    <a class="d-flex align-items-center text-muted" href="#">
+                        <span data-feather="plus-circle"></span>
+                    </a>
+                </h6>
+                <ul class="nav flex-column mb-2">
+                    <li class="nav-item">
+                        <g:link class="nav-link" controller="estudiante" action="listarEstudiantesJson" >
+                            <span data-feather="file-text"></span>
+                            Render a JSON
+                        </g:link>
                     </li>
-                    <li>
-                        <a href="#">Alert Name <span class="label label-primary">Alert Badge</span></a>
+                    <li class="nav-item">
+                        <g:link class="nav-link" controller="estudiante" action="listarEstudiantesXml" >
+                            <span data-feather="file-text"></span>
+                            Render a XML
+                        </g:link>
                     </li>
-                    <li>
-                        <a href="#">Alert Name <span class="label label-success">Alert Badge</span></a>
+                    <li class="nav-item">
+                        <g:link class="nav-link" controller="estudiante" action="consultaEstudiante" >
+                            <span data-feather="file-text"></span>
+                            Consultar Estudiante
+                        </g:link>
                     </li>
-                    <li>
-                        <a href="#">Alert Name <span class="label label-info">Alert Badge</span></a>
-                    </li>
-                    <li>
-                        <a href="#">Alert Name <span class="label label-warning">Alert Badge</span></a>
-                    </li>
-                    <li>
-                        <a href="#">Alert Name <span class="label label-danger">Alert Badge</span></a>
-                    </li>
-                    <li class="divider"></li>
-                    <li>
-                        <a href="#">View All</a>
-                    </li>
-                </ul>
-            </li>
-            <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i><sec:username/><b class="caret"></b></a>
-                <ul class="dropdown-menu">
-                    <li>
-                        <a href="#"><i class="fa fa-fw fa-user"></i> Profile</a>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fa fa-fw fa-envelope"></i> Inbox</a>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fa fa-fw fa-gear"></i> Settings</a>
-                    </li>
-                    <li class="divider"></li>
-                    <li>
-                        %{--
-                        Para acceder directamente al logout debe ser una llamada POST.
-                        Puedo llamarlo desde un controlador, via el servicio de Spring.
-                        --}%
-                        <form name="submitForm" method="POST" action="${createLink(controller: 'logout')}">
-                            <input type="hidden" name="" value="">
-                        </form>
-                        <a href="javascript:document.submitForm.submit()"><i class="fa fa-fw fa-power-off"></i>Log Out</a>
+                    <li class="nav-item">
+                        <g:link class="nav-link" controller="estudiante" action="noEntraPorFiltro" >
+                            <span data-feather="file-text"></span>
+                            No Entrar Bloqueo
+                        </g:link>
                     </li>
                 </ul>
-            </li>
-        </ul>
-        <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
-        <div class="collapse navbar-collapse navbar-ex1-collapse">
-            <ul class="nav navbar-nav side-nav">
-                <li>
-                    <g:link uri="/bootStrap"><i class="fa fa-fw fa-dashboard"></i> Inicio </g:link>
-                </li>
-                <li>
-                    <g:link controller="formularios" action="index"><i class="fa fa-fw fa-edit"></i> Formularios</g:link>
-                </li>
-                <li>
-                    <g:link controller="grupoAsignatura" action="index"><i class="fa fa-fw fa-bar-chart-o"></i> Estudiante Scaffold</g:link>
-                </li>
-                <li>
-                    <g:link controller="zonaAdmin" action="index"><i class="fa fa-fw fa-bar-chart-o"></i> Zona Admin</g:link>
-                </li>
-                <li>
-                    <g:link controller="miControladorRest" action="pruebaChartGoogle"><i class="fa fa-fw fa-bar-chart-o"></i>Prueba Google Chart</g:link>
-                </li>
-                <li>
-                    <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Casos Varios <i class="fa fa-fw fa-caret-down"></i></a>
-                    <ul id="demo" class="collapse">
-                        <li>
-                            <g:link controller="estudiante" action="listarEstudiantesJson" target="_blank">Render a JSON</g:link >
-                        </li>
-                        <li>
-                            <g:link controller="estudiante" action="listarEstudiantesXml" target="_blank">Render a XML</g:link >
-                        </li>
-                        <li>
-                            <g:link controller="estudiante" action="consultaEstudiante">Consultar Estudiante</g:link >
-                        </li>
-                        <li>
-                            <g:link controller="estudiante" action="noEntraPorFiltro">Bloqueo por Filtro</g:link >
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
-        <!-- /.navbar-collapse -->
-    </nav>
-
-    <div id="page-wrapper">
-
-        <div class="container-fluid">
-
-            <!-- Page Heading -->
-            <div class="row">
-                <div class="col-lg-12">
-                    <h1 class="page-header">
-                        <g:pageProperty name="page.encabezado">
-
-                        </g:pageProperty>
-                    </h1>
-
-                    <ol class="breadcrumb">
-                        <g:pageProperty name="page.breadcrumb">
-
-                        </g:pageProperty>
-                    </ol>
-                </div>
             </div>
-            <!-- /.row -->
+        </nav>
+
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+                <g:pageProperty name="page.encabezado">
+                    <h1 class="h2">Dashboard</h1>
+                </g:pageProperty>
+            </div>
+
             <g:pageProperty name="page.contenido">
 
             </g:pageProperty>
-        </div>
-        <!-- /.container-fluid -->
-
+            
+        </main>
     </div>
-    <!-- /#page-wrapper -->
-
 </div>
-<!-- /#wrapper -->
 
 %{--
 Comentado el uso de JS directo y utilizandolo por el asset-pipeline
@@ -225,6 +165,11 @@ Comentado el uso de JS directo y utilizandolo por el asset-pipeline
 
 <!-- Bootstrap Core JavaScript -->
 %{--<script src="js/bootstrap.min.js"></script>--}%
+
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="/webjars/jquery/3.0.0/jquery.min.js" ></script>
+<script src="/webjars/popper.js/1.14.3/popper.min.js"></script>
+<script src="/webjars/bootstrap/4.1.3/js/bootstrap.min.js" ></script>
 
 </body>
 </html>

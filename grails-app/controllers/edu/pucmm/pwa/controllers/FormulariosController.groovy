@@ -6,7 +6,7 @@ class FormulariosController {
 
     def vistaBootStrap(){
         println("....")
-        render(view: "/indexBootStrap")
+        render(view: "/indexBootStrap", model: [objeto1 : "hola", otro: "2"])
     }
 
     def accionSinVista(){
@@ -96,6 +96,7 @@ class FormulariosController {
      */
     def formulario4(int matricula){ //La forma recomendad...
         withForm {
+            sleep(1000);
             // good request
             println("Matricula recuperada $matricula")
             if(!matricula){

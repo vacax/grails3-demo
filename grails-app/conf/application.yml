@@ -2,19 +2,24 @@
 grails:
     profile: web
     codegen:
-        defaultPackage: grails3.demo
-    spring:
-        transactionManagement:
-            proxies: false
+        defaultPackage: grails3-demo
+    gorm:
+        reactor:
+            # Whether to translate GORM events into Reactor events
+            # Disabled by default for performance reasons
+            events: false
 info:
     app:
         name: '@info.app.name@'
         version: '@info.app.version@'
         grailsVersion: '@info.app.grailsVersion@'
 spring:
+    main:
+        banner-mode: "off"
     groovy:
         template:
             check-template-location: false
+
 # Spring Actuator Endpoints are Disabled by Default
 endpoints:
     enabled: false
@@ -28,10 +33,10 @@ grails:
             accept:
                 header:
                     userAgents:
-                        - Gecko
-                        - WebKit
-                        - Presto
-                        - Trident
+                    - Gecko
+                    - WebKit
+                    - Presto
+                    - Trident
         types:
             all: '*/*'
             atom: application/atom+xml
@@ -39,22 +44,22 @@ grails:
             csv: text/csv
             form: application/x-www-form-urlencoded
             html:
-              - text/html
-              - application/xhtml+xml
+            - text/html
+            - application/xhtml+xml
             js: text/javascript
             json:
-              - application/json
-              - text/json
+            - application/json
+            - text/json
             multipartForm: multipart/form-data
             pdf: application/pdf
             rss: application/rss+xml
             text: text/plain
             hal:
-              - application/hal+json
-              - application/hal+xml
+            - application/hal+json
+            - application/hal+xml
             xml:
-              - text/xml
-              - application/xml
+            - text/xml
+            - application/xml
     urlmapping:
         cache:
             maxsize: 1000
@@ -81,16 +86,14 @@ endpoints:
 hibernate:
     cache:
         queries: false
-        use_second_level_cache: true
+        use_second_level_cache: false
         use_query_cache: false
-        region.factory_class: org.hibernate.cache.ehcache.SingletonEhCacheRegionFactory
-
 dataSource:
     pooled: true
     jmxExport: true
     driverClassName: org.h2.Driver
     username: sa
-    password:
+    password: ''
 
 environments:
     development:
@@ -103,8 +106,8 @@ environments:
             url: jdbc:h2:mem:testDb;MVCC=TRUE;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE
     production:
         dataSource:
-            dbCreate: update
-            url: jdbc:h2:./prodDbIA;MVCC=TRUE;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE
+            dbCreate: none
+            url: jdbc:h2:./prodDb;MVCC=TRUE;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE
             properties:
                 jmxEnabled: true
                 initialSize: 5

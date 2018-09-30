@@ -15,7 +15,7 @@
     </content>
 
     <content tag="encabezado">
-        Ejemplo del Plugins de Google Chart
+        <h1 class="h2">Ejemplo del Plugins de Google Chart</h1>
     </content>
 
     <content tag="breadcrumb">
