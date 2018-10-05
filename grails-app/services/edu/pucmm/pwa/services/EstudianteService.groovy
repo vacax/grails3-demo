@@ -3,7 +3,8 @@ package edu.pucmm.pwa.services
 import comandos.ProcesarDatosEstudianteCommand
 import edu.pucmm.pwa.domains.DireccionEstudiante
 import edu.pucmm.pwa.domains.Estudiante
-import grails.transaction.Transactional
+import grails.gorm.transactions.Transactional
+
 
 /**
  * Clase que representa un servicio.

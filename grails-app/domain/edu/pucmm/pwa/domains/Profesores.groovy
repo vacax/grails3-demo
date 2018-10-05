@@ -6,7 +6,7 @@ import grails.rest.Resource
  * Profesores,
  *
  * Esta creado como un recurso REST de frente con el domino, ver la documentacion oficial
- * http://grails.org/doc/latest/guide/webServices.html#domainResources
+ * http://docs.grails.org/latest/guide/single.html#REST
  */
 @Resource(uri = "/profesores", formats = ["json"] )
 class Profesores {

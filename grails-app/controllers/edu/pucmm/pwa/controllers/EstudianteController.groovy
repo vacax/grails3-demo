@@ -80,7 +80,8 @@ class EstudianteController {
     }
 
     /**
-     *
+     * No permite la entrada la entrada por el filtro.
+     * Ver la clase EstudianteInterceptor
      * @return
      */
     def noEntraPorFiltro(){

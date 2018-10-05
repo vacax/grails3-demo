@@ -1,11 +1,14 @@
 package edu.pucmm.pwa.services
 
-import grails.transaction.Transactional
+import edu.pucmm.pwa.domains.Estudiante
+import grails.gorm.transactions.Transactional
+
 
 /**
  * Representa la clase que maneja las transacciones de nuestra aplicacion.
+ * http://docs.grails.org/latest/guide/single.html#services
  */
-@Transactional
+@Transactional //por defecto los servicios manejan la transaccion
 class ReglaNegocioService {
 
     /**
@@ -26,4 +29,15 @@ class ReglaNegocioService {
     public void metodoTradicional(int param1, String param2){
 
     }
+
+    /**
+     * Transacción de tipo lectura.
+     * @return
+     */
+    @Transactional(readOnly = true)
+    public List<Estudiante> listaEstudiante(){
+        return Estudiante.list()
+    }
+
+
 }

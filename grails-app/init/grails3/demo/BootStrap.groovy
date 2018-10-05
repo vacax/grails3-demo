@@ -1,5 +1,6 @@
 package grails3.demo
 
+import edu.pucmm.pwa.domains.Asignatura
 import edu.pucmm.pwa.domains.Estudiante
 import edu.pucmm.pwa.domains.Roles
 import edu.pucmm.pwa.domains.Usuario
@@ -24,6 +25,9 @@ class BootStrap {
         //Asociando el usuario y los roles.
         UsuarioRoles.create(admin, roleAdmin);
         UsuarioRoles.create(usuario, roleUsuario);
+
+        //creando asignaturas.
+        new Asignatura(codigoMateria: "ISC-517", nombre: "Internet Avanzado").save(failOnError: true)
 
     }
     def destroy = {
