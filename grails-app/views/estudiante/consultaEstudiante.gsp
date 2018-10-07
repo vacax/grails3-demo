@@ -22,6 +22,9 @@
                 <h3 class="panel-title">Consulta de un Estudiante</h3>
             </div>
             <div class="panel-body">
+                <g:if test="${flash.error}">
+                   ${flash.error}
+                </g:if>
                 <g:form action="visualizarEstudiante" role="form">
                     <div class="form-group">
                         <label for="matricula">Matrícula</label>

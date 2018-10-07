@@ -30,7 +30,8 @@ class BootStrap {
         new Asignatura(codigoMateria: "ISC-517", nombre: "Internet Avanzado").save(failOnError: true)
 
     }
-    def destroy = {
 
+    def destroy = {
+        println("Salida de la aplicación....")
     }
 }

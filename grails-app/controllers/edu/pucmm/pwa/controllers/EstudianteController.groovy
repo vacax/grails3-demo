@@ -27,7 +27,7 @@ class EstudianteController {
         def listaEstudiante=Estudiante.list(); // Todos los estudiantes.
 
         //Retornando datos a la vista....
-        [listaEstudiante: listaEstudiante]
+        [listaEstudiante: listaEstudiante, otraVariable: "hola mundo"]
     }
 
     /**
@@ -63,14 +63,17 @@ class EstudianteController {
      */
     def visualizarEstudiante(int matricula){
         //
+        //int matricula = params['matricula'] as Integer
         println("Los parametros recibidos: "+params)
         if(!matricula){ //params.matricula
             render "Debe enviar el parametro de matricula...."
         }  else{
             def estudiante = Estudiante.findByMatricula(matricula); // def sintaxis groovy...
             if(!estudiante){
-                render "Estudiante no existe...";
+                //render "Estudiante no existe...";
+                response.addHeader("error_matricula", "no existe la matricula...")
                 flash.error = "No  existe la matrícula enviada"
+                flash.otroKey = "Otra cosa...."
                 redirect(action: "consultaEstudiante")
                 return;
             }else {

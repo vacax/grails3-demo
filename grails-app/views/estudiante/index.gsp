@@ -31,7 +31,7 @@
         Nombre
     </th>
     <th>
-        Apellido
+        Apellido  ${otraVariable}
     </th>
     </thead>
     <tbody>

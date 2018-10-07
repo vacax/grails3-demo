@@ -84,6 +84,7 @@ class FormulariosController {
         estudiante.save(failOnError: false, flush: true);
         if(estudiante.hasErrors()){
             render("El error guardando el estudiante: "+estudiante.errors)
+            return;
         }
 
         render(view: "index", model: [estudiante3: estudiante])

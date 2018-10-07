@@ -1,6 +1,8 @@
 package edu.pucmm.pwa.controllers
 
+import edu.pucmm.pwa.domains.Asignatura
 import edu.pucmm.pwa.domains.Profesores
+import edu.pucmm.pwa.encapsulaciones.AsignaturaForm
 import grails.converters.JSON
 
 /**
@@ -39,5 +41,19 @@ class MiControladorRestController {
         def myDailyActivitiesData = [['Work', 11], ['Eat', 2], ['Commute', 2], ['Watch TV', 2], ['Sleep', 7]]
         //retornando...
         [myDailyActivitiesColumns: myDailyActivitiesColumns, myDailyActivitiesData : myDailyActivitiesData];
+    }
+
+    /**
+     * Probando el uso de la asignaturaForm como objeto de validación
+     * @param asignaturaForm
+     */
+    def creacionAsignatura(AsignaturaForm asignaturaForm){
+        if(!asignaturaForm.validate()){
+            response.sendError(403, "Parametros no enviados de forma correcta: "+asignaturaForm.errors.properties)
+            return
+        }
+
+        def a = new Asignatura(asignaturaForm.properties).save(failOnError: true)
+        respond(a)
     }
 }
